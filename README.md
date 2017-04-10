@@ -1,8 +1,10 @@
 # @ngrx examples
 
-[Angular 2](https://angular.io/) + [ngrx](https://github.com/ngrx) examples
+[Angular](https://angular.io/) + [ngrx](https://github.com/ngrx) examples
 
 ##Examples
+
+All examples are using Angular ^4.x and created with Angular CLI ^1.x
 
 ### Counter
 ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-counter))
