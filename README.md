@@ -24,3 +24,4 @@ Simple TODO application with CRUD operations.
 3. Using the async pipe with the enhanced ngFor (Angular >=4.x)
 4. Dispatching actions from a service
 5. Intercepting ajax requests with ngrx/effects
+6. Sample node server API
