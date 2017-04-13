@@ -1,0 +1,12 @@
+<form (ngSubmit)="onSubmit()" novalidate>
+  <input placeholder="Title" 
+    id="title" type="text"
+    name="title"
+    [(ngModel)]="title"
+    (keyup.escape)="clear()"
+    autocomplete="off"
+    autofocus
+    placeholder="What needs to be done?"
+    required
+    />
+</form>
