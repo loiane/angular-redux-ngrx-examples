@@ -1,0 +1,7 @@
+<ul class="collection">
+  <app-task-item *ngFor="let task of tasks$ | async" 
+    [task]="task"
+    (remove)="onRemove(task)"
+    (complete)="onUpdate(task, $event)">    
+  </app-task-item>
+</ul>
