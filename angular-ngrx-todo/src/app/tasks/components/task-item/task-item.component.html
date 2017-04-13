@@ -1,0 +1,11 @@
+<li class="collection-item">
+  <span [class.task-completed]="task.completed">{{ task.title }}</span>
+  <a class="secondary-content btn-floating" 
+    (click)="onRemove()">
+    <i class="material-icons circle">delete</i>
+  </a>
+  <a class="secondary-content btn-floating" 
+    (click)="onComplete()">
+    <i class="material-icons circle">done</i>
+  </a>
+</li>
