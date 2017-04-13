@@ -26,9 +26,9 @@ Simple TODO application with CRUD operations.
 5. Intercepting ajax requests with ngrx/effects
 6. Sample node server API
 
-### Simple LSM with Firebase (coming soon)
+### Simple LMS with Firebase (coming soon)
 ##### Summary
-Simple Learning Management System with login and CRUD operations using Firebase
+Simple Learning Management System (list of courses and lessons) with login and CRUD operations using Firebase
 ##### Demonstrates
 1. Initial reducer state 
 2. Login screen
