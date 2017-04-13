@@ -25,3 +25,15 @@ Simple TODO application with CRUD operations.
 4. Dispatching actions from a service
 5. Intercepting ajax requests with ngrx/effects
 6. Sample node server API
+
+### Simple LSM with Firebase (coming soon)
+##### Summary
+Simple Learning Management System with login and CRUD operations using Firebase
+##### Demonstrates
+1. Initial reducer state 
+2. Login screen
+3. Multiple reducers
+4. Using the async pipe with the enhanced ngIf and ngFor (Angular >=4.x)
+5. Dispatching actions from a service
+6. Intercepting ajax requests with ngrx/effects
+7. Firebase
