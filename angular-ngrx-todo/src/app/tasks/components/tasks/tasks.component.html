@@ -1,3 +1,12 @@
-<p>
-  tasks works!
-</p>
+<div class="row">
+  <div class="col s6 offset-s3 input-field">
+    <app-task-form (createTask)="onCreateTask($event)"></app-task-form>
+
+    <app-tasks-list 
+      [tasks]="tasks$"
+      (remove)="onRemoveTask($event)"
+      (complete)="onUpdateTask($event)"
+    >
+    </app-tasks-list>
+  </div>
+</div>
