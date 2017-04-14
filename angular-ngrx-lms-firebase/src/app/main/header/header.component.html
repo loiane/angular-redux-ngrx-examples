@@ -1,0 +1,30 @@
+<div>
+  <md-toolbar color="primary">
+    <span>
+      <img src="assets/img/angular_whiteTransparent.svg" class="docs-angular-logo">
+      NgRx LMS + Firebase
+    </span>
+
+    <button md-icon-button [md-menu-trigger-for]="menu">
+      <md-icon>more_vert</md-icon>
+    </button>
+
+  </md-toolbar>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item>
+      <md-icon>person_add</md-icon>Register
+    </button>
+
+    <button md-menu-item>
+      <md-icon>person</md-icon>Login
+    </button>
+
+    <button md-menu-item>
+      <md-icon>subscriptions</md-icon>Courses
+    </button>
+
+    <button md-menu-item>
+      <md-icon>exit_to_app</md-icon>Logout
+    </button>
+  </md-menu>
+</div>
