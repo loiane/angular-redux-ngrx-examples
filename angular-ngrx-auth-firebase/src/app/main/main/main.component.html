@@ -1,0 +1,5 @@
+<app-header [user]="user$" (logout)="onLogout()"></app-header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<app-error [error]="error$"></app-error>
