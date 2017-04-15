@@ -7,7 +7,6 @@
 All examples are using Angular 4.x and created with Angular CLI 1.x
 
 ### Counter ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-counter))
-##### Summary
 A counter which can be incremented, decremented, with the option to increment or decrement async and reset the counter. This is the most basic ngrx example, with no ajax integration.
 ##### Demonstrates
 1. Creating a basic reducer
@@ -16,7 +15,6 @@ A counter which can be incremented, decremented, with the option to increment or
 4. Dispatching actions from a component
 
 ### Todo CRUD ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-todo))
-##### Summary
 Simple TODO application with CRUD operations with node backend.
 ##### Demonstrates
 1. Initial reducer state 
@@ -27,7 +25,6 @@ Simple TODO application with CRUD operations with node backend.
 6. Sample node server API
 
 ### Firebase Auth ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-auth-firebase))
-##### Summary
 Login + Logout + Register screen using Firebase.
 ##### Demonstrates
 1. Initial reducer state 
@@ -38,10 +35,10 @@ Login + Logout + Register screen using Firebase.
 6. Intercepting ajax requests with ngrx/effects
 7. Routing from ngrx/effect
 8. Auth Guard using ngrx store state
-9. Firebase
+9. Error handling with messages on the screen
+10. Firebase
 
 ### Simple LMS with Firebase (coming soon)
-##### Summary
 Simple Learning Management System (list of courses and lessons) with login and CRUD operations using Firebase
 ##### Demonstrates
 1. Initial reducer state 
