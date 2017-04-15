@@ -17,7 +17,7 @@ A counter which can be incremented, decremented, with the option to increment or
 
 ### Todo CRUD ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-todo))
 ##### Summary
-Simple TODO application with CRUD operations.
+Simple TODO application with CRUD operations with node backend.
 ##### Demonstrates
 1. Initial reducer state 
 2. Managing collections in reducer 
@@ -25,6 +25,20 @@ Simple TODO application with CRUD operations.
 4. Dispatching actions from a service
 5. Intercepting ajax requests with ngrx/effects
 6. Sample node server API
+
+### Firebase Auth ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-auth-firebase))
+##### Summary
+Login + Logout + Register screen using Firebase.
+##### Demonstrates
+1. Initial reducer state 
+2. Login screen + Register screen
+3. Menu/Navbar with conditional buttons/links
+4. Using the async pipe with the enhanced ngIf and ngFor (Angular >=4.x)
+5. Dispatching actions
+6. Intercepting ajax requests with ngrx/effects
+7. Routing from ngrx/effect
+8. Auth Guard using ngrx store state
+9. Firebase
 
 ### Simple LMS with Firebase (coming soon)
 ##### Summary
