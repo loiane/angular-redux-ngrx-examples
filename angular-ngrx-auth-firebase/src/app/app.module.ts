@@ -1,28 +1,10 @@
-import { MainModule } from './main/main.module';
-import { AuthGuard } from './auth/guards/auth.guard';
-import { firebaseConfig, authConfig } from './../environments/firebase-config';
-import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { RouterStoreModule } from '@ngrx/router-store';
-import { authReducer } from './auth/store/auth.reducer';
-
-//dev only
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
-
-export function instrumentOptions() {
-  return {
-    monitor: useLogMonitor({ visible: true, position: 'right' })
-  };
-}
-//dev-only END
 
 @NgModule({
   declarations: [
@@ -30,22 +12,11 @@ export function instrumentOptions() {
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
-    AppRoutingModule,
-    AuthModule,
-    MainModule,
-    AngularFireModule.initializeApp(firebaseConfig, authConfig),
-    StoreModule.provideStore({
-      auth: authReducer//,
-      //router: window.location.pathname
-    }),
-    //RouterStoreModule.connectRouter(),
-    StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule
+    AppRoutingModule
   ],
-  providers: [
-    AuthGuard
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
