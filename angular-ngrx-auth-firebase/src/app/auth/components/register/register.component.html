@@ -1,0 +1,41 @@
+<p>
+  Create a new user
+</p>
+
+<div class="row">
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="onSignUp()">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" formControlName="email" [class.invalid]="form.controls['email'].touched && !form.controls['email'].valid">
+        <label for="email" data-error="A valid email is required">
+          Email
+        </label>
+      </div>
+    </div>
+    <div formGroupName="matchingPasswords"> 
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" formControlName="password" [class.invalid]="form.controls['matchingPasswords'].controls['password'].touched && !form.controls['matchingPasswords'].controls['password'].valid">
+          <label for="password" data-error="Password must be at least 6 characters">
+            Password
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="confirmPassword" type="password" class="validate" formControlName="confirmPassword" [class.invalid]="passwordGroup.touched">
+          <label for="confirmPassword" data-error="Passwords must match">
+            Confirm Password
+          </label>
+        </div>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn waves-effect waves-light" type="submit" [disabled]="!form.valid">
+          Register<i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

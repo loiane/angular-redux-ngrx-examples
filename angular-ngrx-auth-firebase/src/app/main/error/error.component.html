@@ -1,0 +1,9 @@
+<div class="row" *ngIf="error$ | async as error">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content red-text text-darken-2">
+        <p>{{ error }}</p>
+      </div>
+    </div>
+  </div>
+</div>
