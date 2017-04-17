@@ -1,13 +1,28 @@
-import { AppRoutingModule } from './app-routing.module';
+import { MainModule } from './main/main.module';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { firebaseConfig, authConfig } from './../environments/firebase-config';
+import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireModule } from 'angularfire2';
 
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { RouterStoreModule } from '@ngrx/router-store';
+import { authReducer } from './auth/store/auth.reducer';
+
+//dev only
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+
+export function instrumentOptions() {
+  return {
+    monitor: useLogMonitor({ visible: true, position: 'right' })
+  };
+}
+//dev-only END
 
 @NgModule({
   declarations: [
@@ -15,13 +30,22 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule.forRoot(),
-    BrowserAnimationsModule
+    AuthModule,
+    MainModule,
+    AngularFireModule.initializeApp(firebaseConfig, authConfig),
+    StoreModule.provideStore({
+      auth: authReducer//,
+      //router: window.location.pathname
+    }),
+    //RouterStoreModule.connectRouter(),
+    StoreDevtoolsModule.instrumentStore(instrumentOptions),
+    StoreLogMonitorModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

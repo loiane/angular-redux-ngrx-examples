@@ -1,13 +1,13 @@
-import { AppComponent } from './app.component';
+import { StartComponent } from './main/start/start.component';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+  { path: '', component: StartComponent }
+];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([
-            { path: '', loadChildren: 'app/main/main.module#MainModule' }
-        ])
-    ],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

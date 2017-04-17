@@ -1,33 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 
-@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
-
-body {
-  margin: 0;
-  font-family: Roboto, sans-serif;
-}
-
-md-card {
-  max-width: 80%;
-  margin: 2em auto;
-  text-align: center;
-}
-
-md-toolbar-row {
-  justify-content: space-between;
-}
-
-.done {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  color: white;
-}
-
-.docs-angular-logo {
-    margin: 0 4px 3px 0;
-    height: 45px;
-    vertical-align: middle;
-}
+@import "../node_modules/materialize-css/dist/css/materialize.css";

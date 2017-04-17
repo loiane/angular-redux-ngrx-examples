@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
+import { AppState } from './../../ngrx/app.state';
+import { Store } from '@ngrx/store';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import * as states from './../../ngrx/reducers';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input('user') user$: Observable<any>;
+  @Output() logout: EventEmitter<any> = new EventEmitter(false);
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  signOut() {
+    this.logout.emit();
+  }
 }
