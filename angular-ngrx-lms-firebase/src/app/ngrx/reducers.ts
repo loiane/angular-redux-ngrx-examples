@@ -44,3 +44,4 @@ export const getCourseState = (state: AppState) => state.course;
 
 export const getCourses = createSelector(getCourseState, fromCourse.getCourses);
 export const getIsLoadingCourses = createSelector(getCourseState, fromCourse.getIsLoading);
+export const getSelectedCourseUrl = createSelector(getCourseState, fromCourse.getSelectedCourse);

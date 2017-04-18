@@ -1,5 +1,6 @@
 import { CourseState, courseInitialState } from './courses.state';
 import { CoursesActionTypes, CoursesAction } from './courses.actions';
+import { createSelector } from 'reselect';
 
 export function courseReducer(state = courseInitialState, 
     action: CoursesAction): CourseState {
@@ -46,4 +47,11 @@ export function courseReducer(state = courseInitialState,
 }
 
 export const getCourses = (state: CourseState) => state.courses;
+
 export const getIsLoading = (state: CourseState) => state.isLoadingCourses;
+
+export const getSelectedUrl = (state: CourseState) => state.selectedCourse;
+
+export const getSelectedCourse = createSelector(getCourses, getSelectedUrl, 
+    (courses, selectedUrl) => courses.find(course => course.url == selectedUrl)
+);
