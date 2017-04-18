@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row"  >
+    <div class="preloader-wrapper active" 
+      *ngIf="isLoading$ | async as isLoading; else listCourses">
+      <app-loader></app-loader>
+    </div>
+    <ng-template #listCourses>
+      <app-courses-list-item 
+      *ngFor="let course of courses$ | async" 
+      [course]="course"
+      (courseClicked)="goToCourseDetail($event)">
+    </app-courses-list-item>
+    </ng-template>
+  </div>  
+</div>
