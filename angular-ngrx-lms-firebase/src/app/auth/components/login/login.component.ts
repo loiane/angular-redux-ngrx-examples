@@ -1,4 +1,3 @@
-import { AppState } from './../../../ngrx/app.state';
 import { AuthState } from './../../store/auth.state';
 import { Store, State } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     //private router: Router,
-    private store: Store<AppState>
+    private store: Store<AuthState>
   ) { }
 
   ngOnInit() {

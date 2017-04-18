@@ -1,5 +1,5 @@
+import { AuthState } from './../../store/auth.state';
 import { User } from './../../model/user';
-import { AppState } from './../../../ngrx/app.state';
 import { Store } from '@ngrx/store';
 import { PasswordValidator } from './../../../shared/validators/password-validator';
 import { Component, OnInit } from '@angular/core';
@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AuthState>
   ) { }
 
   ngOnInit() {
