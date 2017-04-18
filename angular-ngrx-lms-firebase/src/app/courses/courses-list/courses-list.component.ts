@@ -38,7 +38,9 @@ export class CoursesListComponent implements OnInit {
   }
 
   goToCourseDetail(url){
-    this.router.navigate([`courses/${url}`]);
+    this.store.dispatch(
+      new actions.CourseSelectedAction({url})
+    );
   }
 
 }

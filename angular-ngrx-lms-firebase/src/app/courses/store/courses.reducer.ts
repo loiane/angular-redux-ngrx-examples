@@ -24,6 +24,12 @@ export function courseReducer(state = courseInitialState,
             });
         }
 
+         case CoursesActionTypes.COURSE_SELECTED: {
+            return Object.assign({}, state, {
+                selectedCourse: action.payload.url
+            });
+        }
+
         case CoursesActionTypes.COURSES_ERROR: {
             return Object.assign({}, state, {
                 courses: null,

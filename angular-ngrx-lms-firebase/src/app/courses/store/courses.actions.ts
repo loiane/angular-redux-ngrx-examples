@@ -6,6 +6,8 @@ import { type } from './../../ngrx/util';
 export const CoursesActionTypes = {
     COURSES_LOAD_REQUESTED: type('[Course] Load All Courses Requested'),
     COURSES_LOAD_COMPLETED: type('[Course] Load All Courses Completed'),
+    
+    COURSE_SELECTED: type('[Course] Course Selected'),
 
     COURSES_ERROR:     type('[Course] -Courses Error-')
 };
@@ -32,8 +34,15 @@ export class CourseErrorAction implements Action {
     constructor(public payload: any) { }
 }
 
+export class CourseSelectedAction implements Action {
+    type = CoursesActionTypes.COURSE_SELECTED;
+
+    constructor(public payload: {url}) { }
+}
+
 
 export type CoursesAction
     = LoadAllCoursesRequestedAction
     | LoadAllCoursesCompletedAction
+    | CourseSelectedAction
     | CourseErrorAction;
