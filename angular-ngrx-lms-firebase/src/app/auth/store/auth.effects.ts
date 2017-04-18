@@ -5,7 +5,6 @@ import { AuthService } from './../services/auth.service';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
-import { go } from '@ngrx/router-store';
 
 import * as auth from './../store/auth.actions';
 

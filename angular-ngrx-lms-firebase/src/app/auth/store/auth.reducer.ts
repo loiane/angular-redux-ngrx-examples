@@ -1,4 +1,3 @@
-import { AppState } from './../../ngrx/app.state';
 import { AuthAction, AuthActionTypes, AuthErrorAction } from './auth.actions';
 import { AuthState, authInitialState } from './auth.state';
 import { State } from '@ngrx/store';
