@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs/Rx';
-import { AppState } from './../../ngrx/app.state';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import * as actions from './../../auth/store/auth.actions';
@@ -15,7 +14,7 @@ export class MainComponent implements OnInit {
   error$: Observable<string>;
   user$: Observable<any>;
 
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<states.AppState>) { }
 
   ngOnInit() {
     this.error$ = this.store.select(states.getAuthError);

@@ -11,6 +11,11 @@
             {{ user.auth.email }}
           </li>
           <li routerLinkActive="active">
+            <a routerLink="/courses">
+              <i class="material-icons left">subscriptions</i>Courses
+            </a>
+          </li>
+          <li routerLinkActive="active">
             <a (click)="signOut()">
               <i class="material-icons left">exit_to_app</i>Logout
             </a>
