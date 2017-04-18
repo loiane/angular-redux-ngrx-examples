@@ -11,11 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { RouterStoreModule } from '@ngrx/router-store';
-import { authReducer } from './auth/store/auth.reducer';
 
 //dev only
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { reducer } from "app/ngrx/reducers";
 
 export function instrumentOptions() {
   return {
@@ -35,10 +35,7 @@ export function instrumentOptions() {
     AuthModule,
     MainModule,
     AngularFireModule.initializeApp(firebaseConfig, authConfig),
-    StoreModule.provideStore({
-      auth: authReducer//,
-      //router: window.location.pathname
-    }),
+    StoreModule.provideStore(reducer),
     //RouterStoreModule.connectRouter(),
     StoreDevtoolsModule.instrumentStore(instrumentOptions),
     StoreLogMonitorModule
