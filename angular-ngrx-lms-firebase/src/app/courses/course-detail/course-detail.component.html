@@ -1,7 +1,8 @@
-<h4 class="header">{{ (course$ | async)?.name }}</h4>
+<div *ngIf="course$ | async as course" >
+<h4 class="header">{{ course?.name }}</h4>
 
 <div>
-  {{ (course$ | async)?.description }}
+  {{ course?.description }}
 </div>
 
 <!--app-lessons-list *ngIf="lessons" [lessons]="lessons"></app-lessons-list>
@@ -12,3 +13,5 @@
     <i class="material-icons">add</i>
   </a>
 </div-->
+
+</div>
