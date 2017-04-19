@@ -1,3 +1,4 @@
+import { Lesson } from './../../lessons/models/lesson';
 import { Store } from '@ngrx/store';
 import '@ngrx/core/add/operator/select';
 import { CoursesService } from './../courses.service';
@@ -20,16 +21,14 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
 
   course$: Observable<Course>;
   private subscription: Subscription;
-  //lessons: Lesson[];
+  url: string;
+  lessons$: Observable<Lesson[]>;
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromRoot.AppState>
+    private store: Store<fromRoot.AppState>,
+    private coursesService: CoursesService
   ) { 
-    this.subscription = route.params
-      .select<string>('url')
-      .map(url => new actions.CourseSelectedAction({url}))
-      .subscribe(store);
   }
 
   ngOnInit() {
@@ -42,7 +41,17 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
       }
     );*/
 
+    this.subscription = this.route.params
+      .select<string>('url')
+      .map(url => new actions.CourseSelectedAction({url}))
+      .do(url => this.store.dispatch(
+          new actions.LoadCourseLessonsRequestedAction({url})
+      ))
+      .subscribe(this.store);
+      
+
     this.course$ = this.store.select(fromRoot.getSelectedCourseUrl);
+    this.lessons$ = this.store.select(fromRoot.getCourseLessons);
 
   }
 

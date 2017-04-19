@@ -1,7 +1,7 @@
+import { LessonsModule } from './../lessons/lessons.module';
 import { SharedModule } from './../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { CourseEffects } from './store/courses.effects';
-//import { LessonsModule } from './../lessons/lessons.module';
 import { CoursesRoutingModule } from './courses.routing';
 import { CoursesService } from './courses.service';
 import { NgModule } from '@angular/core';
@@ -15,8 +15,8 @@ import { CoursesListItemComponent } from './courses-list-item/courses-list-item.
     CommonModule,
     CoursesRoutingModule,
     EffectsModule.run(CourseEffects),
-    SharedModule
-    //LessonsModule
+    SharedModule,
+    LessonsModule
   ],
   declarations: [
     CoursesListComponent, 

@@ -5,11 +5,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: StartComponent },
-  { 
-        path: 'courses', 
-        loadChildren: 'app/courses/courses.module#CoursesModule',
-        canActivate: [AuthGuard] 
-    },
+  {
+    path: 'courses',
+    loadChildren: 'app/courses/courses.module#CoursesModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'lessons',
+    loadChildren: 'app/lessons/lessons.module#LessonsModule',
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
