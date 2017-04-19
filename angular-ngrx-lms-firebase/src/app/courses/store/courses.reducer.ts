@@ -40,6 +40,12 @@ export function courseReducer(state = courseInitialState,
             });
         }
 
+        case CoursesActionTypes.COURSE_LESSONS_LOAD_COMPLETED: {
+            return Object.assign({}, state, {
+                courseLessons: action.payload.lessons
+            });
+        }
+
         default: {
             return state;
         }
@@ -55,3 +61,6 @@ export const getSelectedUrl = (state: CourseState) => state.selectedCourse;
 export const getSelectedCourse = createSelector(getCourses, getSelectedUrl, 
     (courses, selectedUrl) => courses.find(course => course.url == selectedUrl)
 );
+
+export const getCourseLessons = (state: CourseState) => state.courseLessons;
+

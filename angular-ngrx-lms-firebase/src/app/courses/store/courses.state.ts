@@ -1,3 +1,4 @@
+import { Lesson } from './../../lessons/models/lesson';
 import { Course } from './../models/course';
 
 export interface CourseState {
@@ -5,11 +6,13 @@ export interface CourseState {
     isLoadingCourses: boolean;
     selectedCourse: any;
     error: any;
+    courseLessons: Lesson[];
 }
 
 export const courseInitialState: CourseState = {
     courses: null,
     isLoadingCourses: true,
     selectedCourse: null,
-    error: null
+    error: null,
+    courseLessons: null
 }

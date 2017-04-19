@@ -1,5 +1,5 @@
+import { Lesson } from './../lessons/models/lesson';
 import { Course } from './models/course';
-//import { Lesson } from './../lessons/lesson';
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from "angularfire2";
@@ -34,21 +34,16 @@ export class CoursesService {
           .map( lspc => lspc.map(lpc => lpc.$key) );
     }
 
-    /*findLessonsForLessonKeys(lessonKeys$: Observable<string[]>): Observable<Lesson[]> {
+    findLessonsForLessonKeys(lessonKeys$: Observable<string[]>): Observable<Lesson[]> {
       return lessonKeys$
           .map(lspc => lspc.map(lessonKey => this.db.object('lessons/' + lessonKey)) )
           .flatMap(fbojs => Observable.combineLatest(fbojs) )
     }
 
-    loadFirstLessonsPage(courseUrl:string, pageSize:number): Observable<Lesson[]> {
+    loadLessons(courseUrl:string): Observable<Lesson[]> {
 
-        const firstPageLessonKeys$ = this.findLessonKeysPerCourseUrl(courseUrl,
-            {
-                query: {
-                    limitToFirst:pageSize
-                }
-            });
+        const firstPageLessonKeys$ = this.findLessonKeysPerCourseUrl(courseUrl);
 
         return this.findLessonsForLessonKeys(firstPageLessonKeys$);
-    }*/
+    }
 }

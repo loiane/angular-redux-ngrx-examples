@@ -1,3 +1,4 @@
+import { Lesson } from './../../lessons/models/lesson';
 import { Course } from './../models/course';
 import { ActionCreatorFactory } from './../../ngrx/ngrx-action-creator-factory';
 import { Action } from '@ngrx/store';
@@ -9,11 +10,18 @@ export const CoursesActionTypes = {
     
     COURSE_SELECTED: type('[Course] Course Selected'),
 
+    COURSE_LESSONS_LOAD_REQUESTED: type('[Course] Load Course Lessons Requested'),
+    COURSE_LESSONS_LOAD_COMPLETED: type('[Course] Load Course Lessons Completed'),
+
     COURSES_ERROR:     type('[Course] -Courses Error-')
 };
 
 export class CoursesPayload {
     constructor(public courses: Course[]) { }
+}
+
+export class CourseLessonsPayload {
+    constructor(public lessons: Lesson[]) { }
 }
 
 export class LoadAllCoursesRequestedAction implements Action {
@@ -40,9 +48,23 @@ export class CourseSelectedAction implements Action {
     constructor(public payload: {url}) { }
 }
 
+export class LoadCourseLessonsRequestedAction implements Action {
+    type = CoursesActionTypes.COURSE_LESSONS_LOAD_REQUESTED;
+
+    constructor(public payload: {url}) { }
+} 
+
+export class LoadCourseLessonsCompletedAction implements Action {
+    type = CoursesActionTypes.COURSE_LESSONS_LOAD_COMPLETED;
+
+    constructor(public payload: CourseLessonsPayload) { }
+} 
+
 
 export type CoursesAction
     = LoadAllCoursesRequestedAction
     | LoadAllCoursesCompletedAction
     | CourseSelectedAction
+    | LoadCourseLessonsRequestedAction
+    | LoadCourseLessonsCompletedAction
     | CourseErrorAction;
