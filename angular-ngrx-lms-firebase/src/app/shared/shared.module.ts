@@ -1,16 +1,28 @@
+import { FormInputFieldComponent } from './components/form-input-field/form-input-field.component';
+import { YoutubeEmbedUrlPipe } from './pipes/youtube-embed-url.pipe';
+import { SafeUrlPipe } from './pipes/safe-url.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
-    LoaderComponent
+    LoaderComponent,
+    SafeUrlPipe,
+    YoutubeEmbedUrlPipe,
+    FormInputFieldComponent
   ],
   exports: [
-    LoaderComponent
+    LoaderComponent,
+    SafeUrlPipe,
+    YoutubeEmbedUrlPipe,
+    FormInputFieldComponent
   ]
 })
 export class SharedModule { }
