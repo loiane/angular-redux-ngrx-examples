@@ -1,0 +1,12 @@
+<ul class="collection with-header">
+  <li class="collection-header">
+    <h5>Aulas</h5>
+  </li>
+  <a class="collection-item" 
+    *ngFor="let lesson of lessons"
+    [routerLink]="['/lessons', lesson.url]" >
+    {{ lesson.name }}
+    <span class="secondary-content lesson-duration">{{ lesson.duration }}</span>
+    <i class="material-icons secondary-content">access_time</i>
+  </a>
+</ul>
