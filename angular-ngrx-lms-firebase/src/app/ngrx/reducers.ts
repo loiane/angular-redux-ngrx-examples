@@ -1,3 +1,4 @@
+import { LessonState } from './../lessons/store/lessons.state';
 import { CourseState } from './../courses/store/courses.state';
 import { AuthState } from './../auth/store/auth.state';
 import { createSelector } from 'reselect';
@@ -8,16 +9,20 @@ import { environment } from '../../environments/environment';
 
 import * as fromAuth from './../auth/store/auth.reducer';
 import * as fromCourse from './../courses/store/courses.reducer';
+import * as fromLesson from './../lessons/store/lessons.reducer';
+
 
 export interface AppState {
   //router: RouterState,
   auth: AuthState;
   course: CourseState;
+  lesson: LessonState;
 };
 
 const reducers = {
     auth: fromAuth.authReducer,
-    course: fromCourse.courseReducer
+    course: fromCourse.courseReducer,
+    lesson: fromLesson.lessonReducer
 }
 
 const developmentReducer: ActionReducer<AppState> = compose(storeFreeze, combineReducers)(reducers);
@@ -46,3 +51,11 @@ export const getCourses = createSelector(getCourseState, fromCourse.getCourses);
 export const getIsLoadingCourses = createSelector(getCourseState, fromCourse.getIsLoading);
 export const getSelectedCourseUrl = createSelector(getCourseState, fromCourse.getSelectedCourse);
 export const getCourseLessons = createSelector(getCourseState, fromCourse.getCourseLessons);
+
+// LESSONS
+export const getLessonState = (state: AppState) => state.lesson;
+
+export const getSelectedLessonUrl = createSelector(getLessonState, fromLesson.getSelectedLessonUrl);
+export const getSelectedLesson = createSelector(getCourseLessons, getSelectedLessonUrl, 
+    (lessons, selectedUrl) => lessons.find(lesson => lesson.url == selectedUrl)
+);
