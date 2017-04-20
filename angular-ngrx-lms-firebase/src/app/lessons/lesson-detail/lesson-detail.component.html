@@ -1,4 +1,4 @@
-<div *ngIf="lesson">
+<div *ngIf="lesson$ | async as lesson">
 
   <h3>{{ lesson.name }}</h3>
   <p><i class="material-icons">access_time</i> {{ lesson.duration }}</p>
