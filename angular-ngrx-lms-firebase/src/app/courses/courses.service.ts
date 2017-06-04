@@ -1,9 +1,10 @@
 import { Lesson } from './../lessons/models/lesson';
 import { Course } from './models/course';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from "angularfire2";
-import { FirebaseListFactoryOpts } from "angularfire2/interfaces";
+import { AngularFireDatabase } from 'angularfire2/database';
+import { FirebaseListFactoryOpts } from 'angularfire2/interfaces';
 
 @Injectable()
 export class CoursesService {

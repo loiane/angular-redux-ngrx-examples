@@ -1,44 +1,38 @@
 import { User } from './../model/user';
-import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
-import { AngularFire, AngularFireAuth, FirebaseAuthState } from 'angularfire2';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
 
-  constructor(
-    public af: AngularFire
-  ) {
-    /*this.af.auth.subscribe(user => {
-      if (user) {
-        this.isLoggedIn = true;
-      } else {
-        this.isLoggedIn = false;
-      }
-    });*/
+  //user: Observable<firebase.User>;
+
+  constructor(public afAuth: AngularFireAuth) {
+    //this.user = afAuth.authState;
   }
 
-  signIn(user: User): Observable<FirebaseAuthState> {
+  signIn(user: User) {
     return this.fromFirebaseAuthPromise(
-        this.af.auth.login({ ...user })
-        //this.af.auth.login() //for testing error scenario
+      this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)
     );
   }
 
   signOut() {
     return this.fromFirebaseAuthPromise(
-      this.af.auth.logout()
+      this.afAuth.auth.signOut()
     );
   }
 
-  signUp(user: User): Observable<FirebaseAuthState> {
+  signUp(user: User) {
     return this.fromFirebaseAuthPromise(
-        this.af.auth.createUser({ ...user })
+        this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
     );
   }
 
   private fromFirebaseAuthPromise(promise): Observable<any> {
     return Observable.fromPromise(<Promise<any>>promise);
   }
+
 }

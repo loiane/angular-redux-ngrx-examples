@@ -1,20 +1,20 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http } from "@angular/http";
 import { Observable, Subject } from "rxjs/Rx";
-import { AngularFireDatabase, FirebaseRef } from "angularfire2";
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Lesson } from "./models/lesson";
 
 @Injectable()
 export class LessonsService {
 
-  sdkDb: any;
+  //sdkDb: any;
 
   constructor(
     private db: AngularFireDatabase,
-    @Inject(FirebaseRef) fb,
+    //@Inject(FirebaseRef) fb,
     private http: Http
   ) {
-    this.sdkDb = fb.database().ref();
+    //this.sdkDb = fb.database().ref();
   }
 
   findAllLessons(): Observable<Lesson[]> {
@@ -36,7 +36,7 @@ export class LessonsService {
     //.do(console.log);
   }
 
-  createNewLesson(courseId:string, lesson:any): Observable<any> {
+  /*createNewLesson(courseId:string, lesson:any): Observable<any> {
 
         const lessonToSave = Object.assign({}, lesson, {courseId});
 
@@ -81,6 +81,6 @@ export class LessonsService {
         return this.firebaseUpdate(dataToSave);
 
 
-    }
+    }*/
 
 }
