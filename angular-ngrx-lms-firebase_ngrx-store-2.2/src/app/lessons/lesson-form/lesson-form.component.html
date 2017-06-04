@@ -1,0 +1,88 @@
+<h5>Lesson</h5>
+
+<div class="row">
+
+  <form materialize class="col s12" [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="name" type="text" class="validate" 
+          formControlName="name" 
+          [class.invalid]="isValid('name')">
+        <label for="name" data-error="A name is required">
+          Name
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="description" type="text" class="validate" 
+          formControlName="description" 
+          [class.invalid]="isValid('description')">
+        <label for="description" data-error="A description is required">
+          Description
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s4">
+        <input id="videoUrl" type="text" class="validate" 
+          formControlName="videoUrl" 
+          [class.invalid]="isValid('videoUrl')">
+        <label for="videoUrl" data-error="A Youtube ID is required">
+          Youtube ID
+        </label>
+      </div>
+
+      <div class="input-field col s8">
+        <input id="url" type="text" class="validate" 
+          formControlName="url" 
+          [class.invalid]="isValid('url')">
+        <label for="url" data-error="A url is required">
+          Url
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s4">
+        <input id="duration" type="text" class="validate" 
+          formControlName="duration" 
+          [class.invalid]="isValid('duration')">
+        <label for="duration" data-error="A duration is required">
+          Duration
+        </label>
+      </div>
+
+      <div class="input-field col s8">
+        <input id="tags" type="text" class="validate" 
+          formControlName="tags" 
+          [class.invalid]="isValid('tags')">
+        <label for="tags">
+          Tags
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="sourceCodeUrl" type="text" class="validate" 
+          formControlName="sourceCodeUrl" 
+          [class.invalid]="isValid('sourceCodeUrl')">
+        <label for="sourceCodeUrl">
+          Source code link
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <button class="btn waves-effect waves-light" type="submit" [disabled]="!form.valid">
+          Save<i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </form> 
+</div>

@@ -1,0 +1,20 @@
+<div *ngIf="course$ | async as course" >
+<h4 class="header">{{ course?.name }}</h4>
+
+<div>
+  {{ course?.description }}
+</div>
+
+<app-lessons-list 
+  *ngIf="lessons$ | async as lessons" 
+  [lessons]="lessons">
+</app-lessons-list>
+
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light right red"
+    routerLink="/lessons/new" [queryParams]="{ courseId: course?.$key }">
+    <i class="material-icons">add</i>
+  </a>
+</div>
+
+</div>

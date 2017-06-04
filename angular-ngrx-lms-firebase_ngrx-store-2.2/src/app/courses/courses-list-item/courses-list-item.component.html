@@ -1,0 +1,18 @@
+<div class="col s12 m6">
+  <div class="card">
+    <div class="card-image">
+      <img src="{{ course.thumbnail }}">
+      <a class="btn-floating halfway-fab waves-effect waves-light green">
+        <i class="material-icons">video_library</i>
+      </a>
+    </div>
+    <span class="card-content green-text">Gratuito!</span>
+    <div class="card-action">
+      <a 
+        [routerLink]="course.url" 
+        (click)="onCourseClick(course.url)">
+        {{ course.name }}
+      </a>
+    </div>
+  </div>
+</div>
