@@ -2,6 +2,8 @@
 
 [Angular](https://angular.io/) + [ngrx](https://github.com/ngrx) examples
 
+Examples used to demonstrate Angular + ngrx use for my [Reactive Angular talk (Portuguese)](https://www.slideshare.net/loianeg/projetos-reativos-com-angular-rxjs-e-redux-ngrx)
+
 ##Examples
 
 All examples are using Angular 4.x and created with Angular CLI 1.x
