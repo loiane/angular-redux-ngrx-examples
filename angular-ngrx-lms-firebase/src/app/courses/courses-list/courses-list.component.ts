@@ -7,7 +7,7 @@ import { Course } from '../models/course';
 
 import * as actions from './../store/courses.actions';
 import * as course from './../store/courses.reducer';
-import * as states from './../../ngrx/reducers';
+import { AppState } from './../../store/reducers';
 
 @Component({
   selector: 'app-courses-list',
@@ -21,9 +21,9 @@ export class CoursesListComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
-    private store: Store<states.AppState>,
+    private store: Store<AppState>,
     private router: Router
-    ) { 
+    ) {
       this.store.dispatch(
         new actions.LoadAllCoursesRequestedAction()
       );
@@ -32,9 +32,9 @@ export class CoursesListComponent implements OnInit {
   ngOnInit() {
     //this.courses$ = this.coursesService.findAllCourses();
 
-    this.courses$ = this.store.select(states.getCourses);
+    this.courses$ = this.store.select(course.getCourses);
 
-    this.isLoading$ = this.store.select(states.getIsLoadingCourses);  
+    this.isLoading$ = this.store.select(course.getIsLoadingCourses);
   }
 
   goToCourseDetail(url){

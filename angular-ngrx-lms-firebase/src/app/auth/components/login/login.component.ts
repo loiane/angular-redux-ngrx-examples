@@ -6,7 +6,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as actions from './../../store/auth.actions';
-import * as states from './../../../ngrx/reducers';
+import * as states from './../../../store/reducers';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       .subscribe(user => {
         if (user.uid){
           this.router.navigate(['/home']);
-        } 
+        }
       });*/
   }
 }

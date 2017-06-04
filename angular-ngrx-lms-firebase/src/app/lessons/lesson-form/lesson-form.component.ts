@@ -44,18 +44,18 @@ export class LessonFormComponent implements OnInit {
   }
 
   onSubmit(){
-    this.lessonsService.createNewLesson(this.courseId, this.form.value)
+    /*this.lessonsService.createNewLesson(this.courseId, this.form.value)
       .subscribe(
           () => {
               alert("lesson created succesfully. Create another lesson ?");
               this.form.reset();
           },
           err => alert(`error creating lesson ${err}`)
-      );
+      );*/
   }
 
   isValid(name){
-    return this.form.controls[name].touched && 
+    return this.form.controls[name].touched &&
       !this.form.controls[name].valid
   }
 }

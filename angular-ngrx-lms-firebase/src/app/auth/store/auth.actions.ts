@@ -1,68 +1,64 @@
-import { Action } from '@ngrx/store';
-import { type } from './../../ngrx/util';
+import { Action } from "@ngrx/store";
+import { type } from "./../../store/util";
 
 export const AuthActionTypes = {
-        LOGIN_REQUESTED: type('[Auth] -LOGIN Requested-'),
-        LOGIN_COMPLETED: type('[Auth] -LOGIN Completed-'),
+  LOGIN_REQUESTED: type("[Auth] -LOGIN Requested-"),
+  LOGIN_COMPLETED: type("[Auth] -LOGIN Completed-"),
 
-        LOGOUT_REQUESTED: type('[Auth] -LOGOUT Requested-'),
-        LOGOUT_COMPLETED: type('[Auth] -LOGOUT Completed-'),
+  LOGOUT_REQUESTED: type("[Auth] -LOGOUT Requested-"),
+  LOGOUT_COMPLETED: type("[Auth] -LOGOUT Completed-"),
 
-        SIGNUP_REQUESTED: type('[Auth] -SIGNUP Requested-'),
-        SIGNUP_COMPLETED: type('[Auth] -SIGNUP Completed-'),
+  SIGNUP_REQUESTED: type("[Auth] -SIGNUP Requested-"),
+  SIGNUP_COMPLETED: type("[Auth] -SIGNUP Completed-"),
 
-        AUTH_ERROR:     type('[Auth] -Auth Error-')
+  AUTH_ERROR: type("[Auth] -Auth Error-")
 };
 
-export class AuthUserPayload {
-    constructor(public user: any) { }
-}
-
 export class LoginRequestedAction implements Action {
-    type = AuthActionTypes.LOGIN_REQUESTED;
+  readonly type = AuthActionTypes.LOGIN_REQUESTED;
 
-    constructor(public payload: AuthUserPayload) { }
+  constructor(public payload: {user}) {}
 }
 
 export class LoginCompletedAction implements Action {
-    type = AuthActionTypes.LOGIN_COMPLETED;
+  readonly type = AuthActionTypes.LOGIN_COMPLETED;
 
-    constructor(public payload: AuthUserPayload) { }
+  constructor(public payload: {user}) {}
 }
 
 export class AuthErrorAction implements Action {
-    type = AuthActionTypes.AUTH_ERROR;
+  readonly type = AuthActionTypes.AUTH_ERROR;
 
-    constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class LogoutRequestedAction implements Action {
-    type = AuthActionTypes.LOGOUT_REQUESTED;
+  readonly type = AuthActionTypes.LOGOUT_REQUESTED;
 
-    constructor(public payload = null) { }
+  constructor(public payload?: null) {}
 }
 
 export class LogoutCompletedAction implements Action {
-    type = AuthActionTypes.LOGOUT_COMPLETED;
+  readonly type = AuthActionTypes.LOGOUT_COMPLETED;
 
-    constructor(public payload = null) { }
+  constructor(public payload?: null) {}
 }
 
 export class SignUpRequestedAction implements Action {
-    type = AuthActionTypes.SIGNUP_REQUESTED;
+  readonly type = AuthActionTypes.SIGNUP_REQUESTED;
 
-    constructor(public payload: AuthUserPayload) { }
+  constructor(public payload: {user}) {}
 }
 
 export class SignUpCompletedAction implements Action {
-    type = AuthActionTypes.SIGNUP_COMPLETED;
+  readonly type = AuthActionTypes.SIGNUP_COMPLETED;
 
-    constructor(public payload: AuthUserPayload) { }
+  constructor(public payload: {user}) {}
 }
 
-export type AuthAction
-    = LoginRequestedAction
-    | LoginCompletedAction
-    | LogoutRequestedAction
-    | LogoutCompletedAction
-    | AuthErrorAction;
+export type AuthAction =
+  | LoginRequestedAction
+  | LoginCompletedAction
+  | LogoutRequestedAction
+  | LogoutCompletedAction
+  | AuthErrorAction;

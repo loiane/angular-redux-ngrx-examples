@@ -1,16 +1,14 @@
 import { Lesson } from './../../lessons/models/lesson';
 import { Store } from '@ngrx/store';
-import '@ngrx/core/add/operator/select';
 import { CoursesService } from './../courses.service';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from './../models/course';
-//import { Lesson } from './../../lessons/lesson';
 import { Observable, Subscription } from 'rxjs/Rx';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import * as fromRoot from './../../ngrx/reducers';
-import * as actions from './../store/courses.actions';
 import * as course from './../store/courses.reducer';
+import * as actions from './../store/courses.actions';
+import { AppState } from './../../store/reducers';
 
 @Component({
   selector: 'app-course-detail',
@@ -26,9 +24,9 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromRoot.AppState>,
+    private store: Store<AppState>,
     private coursesService: CoursesService
-  ) { 
+  ) {
   }
 
   ngOnInit() {
@@ -42,16 +40,15 @@ export class CourseDetailComponent implements OnInit, OnDestroy {
     );*/
 
     this.subscription = this.route.params
-      .select<string>('url')
-      .map(url => new actions.CourseSelectedAction({url}))
+      .switchMap(params => params['url'])
+      .do(url => new actions.CourseSelectedAction({url}))
       .do(url => this.store.dispatch(
           new actions.LoadCourseLessonsRequestedAction({url})
       ))
-      .subscribe(this.store);
-      
+      .subscribe();
 
-    this.course$ = this.store.select(fromRoot.getSelectedCourseUrl);
-    this.lessons$ = this.store.select(fromRoot.getCourseLessons);
+    this.course$ = this.store.select(course.getSelectedCourseUrl);
+    this.lessons$ = this.store.select(course.getCourseLessons);
 
   }
 

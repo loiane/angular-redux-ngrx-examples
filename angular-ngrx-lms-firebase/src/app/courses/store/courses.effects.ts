@@ -26,11 +26,9 @@ export class CourseEffects {
     @Effect()
     loadCourseLessonsAction$: Observable<Action> = this.actions$
         .ofType(course.CoursesActionTypes.COURSE_LESSONS_LOAD_REQUESTED)
-        .map(action => action.payload.url.payload)
+        .map(action => action.payload.url)
         .switchMap(payload => this.coursesService.loadLessons(payload.url)
             .map(res => (new course.LoadCourseLessonsCompletedAction(new course.CourseLessonsPayload(res))))
             .catch((error) => Observable.of(new course.CourseErrorAction({error: error})))
     );
-
-
 }

@@ -1,6 +1,10 @@
 import { Lesson } from './../../lessons/models/lesson';
 import { Course } from './../models/course';
 
+export interface CoursesModuleState {
+  courses: CourseState;
+}
+
 export interface CourseState {
     courses: Course[];
     isLoadingCourses: boolean;
@@ -10,9 +14,9 @@ export interface CourseState {
 }
 
 export const courseInitialState: CourseState = {
-    courses: null,
+    courses: [],
     isLoadingCourses: true,
     selectedCourse: null,
     error: null,
-    courseLessons: null
+    courseLessons: []
 }

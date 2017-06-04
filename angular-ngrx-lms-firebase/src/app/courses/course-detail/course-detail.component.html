@@ -5,8 +5,8 @@
   {{ course?.description }}
 </div>
 
-<app-lessons-list 
-  *ngIf="lessons$ | async as lessons" 
+<app-lessons-list
+  *ngIf="lessons$ | async as lessons"
   [lessons]="lessons">
 </app-lessons-list>
 

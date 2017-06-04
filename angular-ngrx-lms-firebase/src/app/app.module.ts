@@ -1,28 +1,19 @@
-import { MainModule } from './main/main.module';
-import { AuthGuard } from './auth/guards/auth.guard';
-import { firebaseConfig, authConfig } from './../environments/firebase-config';
+import { EffectsModule } from '@ngrx/effects';
+import { initialState, reducers } from './store/reducers';
 import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { environment } from './../environments/environment';
+import { MainModule } from './main/main.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
-import { RouterStoreModule } from '@ngrx/router-store';
 
-//dev only
+import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
-import { reducer } from "app/ngrx/reducers";
-
-export function instrumentOptions() {
-  return {
-    monitor: useLogMonitor({ visible: true, position: 'right' })
-  };
-}
-//dev-only END
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -30,18 +21,18 @@ export function instrumentOptions() {
   ],
   imports: [
     BrowserModule,
-    HttpModule,
     AppRoutingModule,
-    AuthModule,
     MainModule,
-    AngularFireModule.initializeApp(firebaseConfig, authConfig),
-    StoreModule.provideStore(reducer),
-    //RouterStoreModule.connectRouter(),
-    StoreDevtoolsModule.instrumentStore(instrumentOptions),
-    StoreLogMonitorModule
+    AuthModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    StoreModule.forRoot(reducers, initialState),
+    EffectsModule.forRoot()//,
+    //not working yet
+    //!environment.production ? StoreDevtoolsModule.instrument({ maxAge: 50 }) : []
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    AngularFireDatabase
   ],
   bootstrap: [AppComponent]
 })

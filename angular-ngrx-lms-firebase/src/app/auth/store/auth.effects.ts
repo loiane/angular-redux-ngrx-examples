@@ -21,7 +21,8 @@ export class AuthEffects {
         .ofType(auth.AuthActionTypes.LOGIN_REQUESTED)
         .map(action => action.payload)
         .switchMap(payload => this.authService.signIn(payload.user)
-            .map(res => (new auth.LoginCompletedAction(new auth.AuthUserPayload(res))))
+            .map(res => (new auth.LoginCompletedAction({user:res})))
+            //.do(console.log)
             .do(() => this.router.navigate(['/home']))
             .catch((error) => Observable.of(new auth.AuthErrorAction({error: error})))
     );
@@ -41,7 +42,7 @@ export class AuthEffects {
         .ofType(auth.AuthActionTypes.SIGNUP_REQUESTED)
         .map(action => action.payload)
         .switchMap(payload => this.authService.signUp(payload.user)
-            .map(res => (new auth.SignUpCompletedAction(new auth.AuthUserPayload(res))))
+            .map(res => (new auth.SignUpCompletedAction({user:res})))
             .do(() => this.router.navigate(['/login']))
             .catch((error) => Observable.of(new auth.AuthErrorAction({error: error})))
     );

@@ -1,8 +1,9 @@
-import { CourseState, courseInitialState } from './courses.state';
+import { AppState } from './../../store/reducers';
+import { CourseState, courseInitialState, CoursesModuleState } from './courses.state';
 import { CoursesActionTypes, CoursesAction } from './courses.actions';
 import { createSelector } from 'reselect';
 
-export function courseReducer(state = courseInitialState, 
+export function courseReducer(state = courseInitialState,
     action: CoursesAction): CourseState {
 
     switch(action.type) {
@@ -52,15 +53,22 @@ export function courseReducer(state = courseInitialState,
     }
 }
 
-export const getCourses = (state: CourseState) => state.courses;
+// APP STATE
+const getCourseModuleState = (state: AppState) => state['coursesModule'];
+const getCoursesState = (state: CoursesModuleState) => state.courses;
+const getCoursesAppState = createSelector(getCourseModuleState, getCoursesState);
 
-export const getIsLoading = (state: CourseState) => state.isLoadingCourses;
-
-export const getSelectedUrl = (state: CourseState) => state.selectedCourse;
-
-export const getSelectedCourse = createSelector(getCourses, getSelectedUrl, 
+// LOCAL MODULE STATE
+const getCoursesLocal = (state: CourseState) => state.courses;
+const getIsLoadingLocal = (state: CourseState) => state.isLoadingCourses;
+const getSelectedUrlLocal = (state: CourseState) => state.selectedCourse;
+const getSelectedCourseLocal = createSelector(getCoursesLocal, getSelectedUrlLocal,
     (courses, selectedUrl) => courses.find(course => course.url == selectedUrl)
 );
+export const getCourseLessonsLocal = (state: CourseState) => state.courseLessons;
 
-export const getCourseLessons = (state: CourseState) => state.courseLessons;
-
+// EXPOSED LOCAL STATE
+export const getCourses = createSelector(getCoursesAppState, getCoursesLocal);
+export const getIsLoadingCourses = createSelector(getCoursesAppState, getIsLoadingLocal);
+export const getSelectedCourseUrl = createSelector(getCoursesAppState, getSelectedCourseLocal);
+export const getCourseLessons = createSelector(getCoursesAppState, getCourseLessonsLocal);

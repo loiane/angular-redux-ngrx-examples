@@ -5,8 +5,9 @@ import { LessonsService } from './../lessons.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromRoot from './../../ngrx/reducers';
+import { AppState } from './../../store/reducers';
 import * as actions from './../store/lessons.actions';
+import * as lessons from './../store/lessons.reducer';
 
 @Component({
   selector: 'app-lesson-detail',
@@ -20,13 +21,8 @@ export class LessonDetailComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<fromRoot.AppState>
-  ) {
-    this.subscription = this.route.params
-      .select<string>('url')
-      .map(url => new actions.LessonSelectedAction({url}))
-      .subscribe(this.store);
-   }
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
     /*this.subscription = this.route.params.switchMap(params => {
@@ -35,7 +31,14 @@ export class LessonDetailComponent implements OnInit, OnDestroy {
     })
       .subscribe(lesson => this.lesson = lesson);*/
 
-    this.lesson$ = this.store.select(fromRoot.getSelectedLesson);
+    this.subscription = this.route.params
+      .map(params => params['url'])
+      .do(url => this.store.dispatch(
+          new actions.LessonSelectedAction({url})
+      ))
+      .subscribe();
+
+      this.lesson$ = this.store.select(lessons.getSelectedLesson);
   }
 
   ngOnDestroy() {

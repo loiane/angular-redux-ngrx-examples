@@ -2,7 +2,7 @@ import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import * as actions from './../../auth/store/auth.actions';
-import * as states from './../../ngrx/reducers';
+import * as states from './../../store/reducers';
 
 @Component({
   selector: 'app-main',

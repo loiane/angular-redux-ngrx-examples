@@ -1,6 +1,6 @@
 import { Lesson } from './../models/lesson';
 import { Action } from '@ngrx/store';
-import { type } from './../../ngrx/util';
+import { type } from './../../store/util';
 
 export const LessonActionTypes = {
     LESSON_SELECTED: type('[Lesson] -LESSON Selected-'),

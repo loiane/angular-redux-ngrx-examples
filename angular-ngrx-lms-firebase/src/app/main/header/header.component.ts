@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import * as states from './../../ngrx/reducers';
 
 @Component({
   selector: 'app-header',
