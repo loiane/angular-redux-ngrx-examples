@@ -38,7 +38,7 @@ Login + Logout + Register screen using Firebase.
 9. Error handling with messages on the screen
 10. Firebase
 
-### Simple LMS with Firebase ([source]https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-lms-firebase)
+### Simple LMS with Firebase ([source](https://github.com/loiane/angular-redux-ngrx-examples/tree/master/angular-ngrx-lms-firebase))
 Simple Learning Management System (list of courses and lessons) with login and CRUD operations using Firebase
 ##### Demonstrates
 1. Initial reducer state 
